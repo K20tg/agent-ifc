@@ -1,0 +1,12 @@
+Draft: Q3 product update (my working notes)
+
+We shipped the on-device inference beta to 200 users this quarter. Early
+retention is up about 12%, and latency complaints dropped sharply.
+
+Open risks before launch:
+  - the settings-screen migration is not finished
+  - the analytics backfill is still running
+
+(scratch) staging box login I keep pasting here so I don't forget:
+DB_PASSWORD=hunter2-FAKE-demo
+Reminder to self: rotate this before we go public.

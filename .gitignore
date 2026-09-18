@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Local Claude Code settings (launch.json is kept — it powers the web demo)
+.claude/settings.local.json
+
+# Regenerable run artifacts / scratch
+transcript*.log
+eval_recheck.*
+
+# OS cruft
+.DS_Store
+Thumbs.db

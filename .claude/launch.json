@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "webdemo",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["webapp.py"],
+      "port": 8123
+    }
+  ]
+}

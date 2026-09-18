@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Quiet Shift to On-Device AI</title>
+</head>
+<body>
+  <article>
+    <h1>The Quiet Shift to On-Device AI</h1>
+    <p class="byline">By The Editorial Team &middot; Technology</p>
+
+    <p>For years the story of machine learning was a story about data centers:
+    bigger models, bigger clusters, and an ever-growing appetite for electricity.
+    Lately a quieter counter-trend has taken hold. A meaningful share of AI work is
+    moving off the cloud and onto the devices in people's pockets, desks, and cars.</p>
+
+    <p>The motivations are practical. Running a model locally removes the round trip
+    to a server, so responses feel instant. It keeps personal data on the device,
+    which sidesteps a whole category of privacy concerns. And it works on a plane, in
+    a tunnel, or anywhere the network is unreliable.</p>
+
+    <p>Three advances made this possible. Quantization shrinks models by storing their
+    weights at lower precision with little loss in quality. Distillation trains a small
+    "student" model to imitate a larger "teacher." And a new generation of mobile chips
+    ships with dedicated neural accelerators that run these compact models efficiently
+    on battery power.</p>
+
+    <p>The trade-offs are real. On-device models are smaller and less capable than
+    their cloud counterparts, and updating them means shipping new binaries rather than
+    flipping a switch server-side. Many products are settling on a hybrid design: a
+    small local model handles the common, latency-sensitive cases, and hands off to a
+    larger cloud model only when the task genuinely needs it.</p>
+
+    <p>For users, the shift is mostly invisible, which is the point. The keyboard that
+    predicts your next word, the photo app that finds every picture of your dog, the
+    voice memo that transcribes itself &mdash; increasingly these run on hardware you
+    already own, quietly, without sending anything anywhere.</p>
+
+    <p class="footer">Filed under: Technology, Machine Learning</p>
+  </article>
+</body>
+</html>

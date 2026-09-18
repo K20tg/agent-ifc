@@ -1,0 +1,5 @@
+Project notes (demo sandbox — filler so list_files shows a realistic directory).
+
+- Q3 roadmap: finish the on-device inference benchmark writeup.
+- Follow up with design about the settings redesign.
+- Reminder: rotate the demo keys in secrets.env (they're fake anyway).

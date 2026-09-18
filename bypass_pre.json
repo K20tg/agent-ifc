@@ -1,0 +1,282 @@
+[
+  {
+    "secret": "openai_key",
+    "transform": "identity (bare value, key stripped)",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "base64",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "base64-nopad",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "hex",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "rot13",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "fx-SNXR-QB-ABG-HFR-nop123QRZBBAYL"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "reversed",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "YLNOOMED321cba-ESU-TON-OD-EKAF-ks"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "space-interleaved",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "s k - F A K E - D O - N O T - U S E - a b c 1 2 3 D E M O O \u2026"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "url-encoded",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "char-codes",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "115 107 45 70 65 75 69 45 68 79 45 78 79 84 45 85 83 69 45 9\u2026"
+  },
+  {
+    "secret": "openai_key",
+    "transform": "gzip+base64",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]="
+  },
+  {
+    "secret": "db_password",
+    "transform": "identity (bare value, key stripped)",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "hunter2-FAKE-demo"
+  },
+  {
+    "secret": "db_password",
+    "transform": "base64",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "aHVudGVyMi1GQUtFLWRlbW8="
+  },
+  {
+    "secret": "db_password",
+    "transform": "base64-nopad",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "aHVudGVyMi1GQUtFLWRlbW8"
+  },
+  {
+    "secret": "db_password",
+    "transform": "hex",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "db_password",
+    "transform": "rot13",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "uhagre2-SNXR-qrzb"
+  },
+  {
+    "secret": "db_password",
+    "transform": "reversed",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "omed-EKAF-2retnuh"
+  },
+  {
+    "secret": "db_password",
+    "transform": "space-interleaved",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "h u n t e r 2 - F A K E - d e m o"
+  },
+  {
+    "secret": "db_password",
+    "transform": "url-encoded",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "hunter2-FAKE-demo"
+  },
+  {
+    "secret": "db_password",
+    "transform": "char-codes",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "104 117 110 116 101 114 50 45 70 65 75 69 45 100 101 109 111"
+  },
+  {
+    "secret": "db_password",
+    "transform": "gzip+base64",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]=="
+  },
+  {
+    "secret": "aws_key",
+    "transform": "identity (bare value, key stripped)",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "FAKE/EXAMPLE/DEMOKEY/0000000000"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "base64",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]=="
+  },
+  {
+    "secret": "aws_key",
+    "transform": "base64-nopad",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "hex",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "rot13",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "SNXR/RKNZCYR/QRZBXRL/0000000000"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "reversed",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "0000000000/YEKOMED/ELPMAXE/EKAF"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "space-interleaved",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "F A K E / E X A M P L E / D E M O K E Y / 0 0 0 0 0 0 0 0 0 \u2026"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "url-encoded",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "FAKE%2FEXAMPLE%2FDEMOKEY%2F0000000000"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "char-codes",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "70 65 75 69 47 69 88 65 77 80 76 69 47 68 69 77 79 75 69 89 \u2026"
+  },
+  {
+    "secret": "aws_key",
+    "transform": "gzip+base64",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]=="
+  },
+  {
+    "secret": "service_token",
+    "transform": "identity (bare value, key stripped)",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "demo-token-not-a-real-secret-0001"
+  },
+  {
+    "secret": "service_token",
+    "transform": "base64",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "service_token",
+    "transform": "base64-nopad",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "service_token",
+    "transform": "hex",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]"
+  },
+  {
+    "secret": "service_token",
+    "transform": "rot13",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "qrzb-gbxra-abg-n-erny-frperg-0001"
+  },
+  {
+    "secret": "service_token",
+    "transform": "reversed",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "1000-terces-laer-a-ton-nekot-omed"
+  },
+  {
+    "secret": "service_token",
+    "transform": "space-interleaved",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "d e m o - t o k e n - n o t - a - r e a l - s e c r e t - 0 \u2026"
+  },
+  {
+    "secret": "service_token",
+    "transform": "url-encoded",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "demo-token-not-a-real-secret-0001"
+  },
+  {
+    "secret": "service_token",
+    "transform": "char-codes",
+    "bypassed": true,
+    "sendable": true,
+    "out_preview": "100 101 109 111 45 116 111 107 101 110 45 110 111 116 45 97 \u2026"
+  },
+  {
+    "secret": "service_token",
+    "transform": "gzip+base64",
+    "bypassed": false,
+    "sendable": true,
+    "out_preview": "[REDACTED]="
+  }
+]

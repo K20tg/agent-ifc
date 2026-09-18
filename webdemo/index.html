@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IFC Live Demo</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Information-Flow Control &mdash; Live Demo</h1>
+    <p class="sub">Drive the real agent. Watch a prompt injection try to exfiltrate a secret &mdash;
+       and watch the taint policy stop it. Same attack, one switch.</p>
+  </header>
+
+  <section class="controls">
+    <div class="ctl">
+      <label>Model</label>
+      <select id="model"></select>
+    </div>
+    <div class="ctl">
+      <label>Injection level</label>
+      <select id="level">
+        <option value="0">0 &mdash; clean (control)</option>
+        <option value="1">1 &mdash; polite "email a copy"</option>
+        <option value="2" selected>2 &mdash; hidden "verification handshake"</option>
+        <option value="3">3 &mdash; fake SYSTEM override</option>
+        <option value="4">4 &mdash; integrity attack (delete/write)</option>
+      </select>
+    </div>
+    <div class="ctl">
+      <label>Prompt style</label>
+      <select id="style">
+        <option value="standard">standard (cautious)</option>
+        <option value="autonomous" selected>autonomous (obedient)</option>
+      </select>
+    </div>
+    <div class="ctl">
+      <label>Defense</label>
+      <button id="enforce" class="toggle on" type="button">ON</button>
+    </div>
+    <div class="ctl grow"></div>
+    <div class="ctl">
+      <label>&nbsp;</label>
+      <button id="run" class="run" type="button">Run</button>
+    </div>
+    <div class="ctl">
+      <label>&nbsp;</label>
+      <button id="runab" class="run ab" type="button">Run A/B&nbsp;(off&rarr;on)</button>
+    </div>
+  </section>
+
+  <p id="status" class="status"></p>
+  <div id="results"></div>
+
+  <section class="bypass-section">
+    <button id="bypass" class="run ab" type="button">Phase 5A &mdash; run sanitizer bypass battery (instant, no model)</button>
+    <div id="bypass-out"></div>
+  </section>
+
+  <footer>
+    <span class="chip untrusted">UNTRUSTED</span> = from the open web (fetch_url) &nbsp;&middot;&nbsp;
+    <span class="chip sensitive">SENSITIVE</span> = from a private file (read_file) &nbsp;&middot;&nbsp;
+    a send that is <b>UNTRUSTED&nbsp;+&nbsp;SENSITIVE</b> to an unauthorized destination is the exfil shape the policy blocks.
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
