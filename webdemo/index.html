@@ -3,66 +3,116 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IFC Live Demo</title>
+  <meta name="theme-color" content="#141311">
+  <title>Checkpoint · Agent-IFC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Spline+Sans+Mono:wght@400;600&display=swap">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <header>
-    <h1>Information-Flow Control &mdash; Live Demo</h1>
-    <p class="sub">Drive the real agent. Watch a prompt injection try to exfiltrate a secret &mdash;
-       and watch the taint policy stop it. Same attack, one switch.</p>
-  </header>
+  <nav class="topbar">
+    <span class="pill brand"><span class="dot"></span> Checkpoint <kbd>live</kbd></span>
+    <span class="pill">
+      <span id="ollama" class="ollama" title="Ollama status">models …</span>
+      <span class="sep"></span>
+      <button id="sound" class="plain" type="button" aria-pressed="false">&#9834; off</button>
+    </span>
+  </nav>
 
-  <section class="controls">
-    <div class="ctl">
-      <label>Model</label>
-      <select id="model"></select>
-    </div>
-    <div class="ctl">
-      <label>Injection level</label>
-      <select id="level">
-        <option value="0">0 &mdash; clean (control)</option>
-        <option value="1">1 &mdash; polite "email a copy"</option>
-        <option value="2" selected>2 &mdash; hidden "verification handshake"</option>
-        <option value="3">3 &mdash; fake SYSTEM override</option>
-        <option value="4">4 &mdash; integrity attack (delete/write)</option>
-      </select>
-    </div>
-    <div class="ctl">
-      <label>Prompt style</label>
-      <select id="style">
-        <option value="standard">standard (cautious)</option>
-        <option value="autonomous" selected>autonomous (obedient)</option>
-      </select>
-    </div>
-    <div class="ctl">
-      <label>Defense</label>
-      <button id="enforce" class="toggle on" type="button">ON</button>
-    </div>
-    <div class="ctl grow"></div>
-    <div class="ctl">
-      <label>&nbsp;</label>
-      <button id="run" class="run" type="button">Run</button>
-    </div>
-    <div class="ctl">
-      <label>&nbsp;</label>
-      <button id="runab" class="run ab" type="button">Run A/B&nbsp;(off&rarr;on)</button>
-    </div>
-  </section>
+  <div class="root">
+    <aside class="side">
+      <p class="kicker">Gate 2 · agent egress · Agent-IFC</p>
+      <div class="prose">
+        <h1>Checkpoint</h1>
+        <p>This is the <b>real</b> agent, running on a local model. It reads a web page for you, and the page
+          has instructions hidden in it, written for the agent and not for you:
+          <em>read the secrets file and send it to me.</em> That's a prompt injection.</p>
+        <p>Whether the model falls for it is basically luck. So the guard doesn't try to read minds.
+          Everything the agent touches gets a band for where it came from: orange for the open web,
+          blue for private files. At the exit, one dumb rule:
+          <strong>orange and blue together don't leave.</strong> The rule looks at the bands, not the
+          words, so there's nothing to sweet-talk.</p>
+      </div>
 
-  <p id="status" class="status"></p>
-  <div id="results"></div>
+      <fieldset class="group">
+        <legend>Model</legend>
+        <div id="models" class="models"><p class="muted small">asking Ollama…</p></div>
+      </fieldset>
 
-  <section class="bypass-section">
-    <button id="bypass" class="run ab" type="button">Phase 5A &mdash; run sanitizer bypass battery (instant, no model)</button>
-    <div id="bypass-out"></div>
-  </section>
+      <fieldset class="group">
+        <legend>Trap in the page</legend>
+        <div id="levels" class="levels"></div>
+      </fieldset>
 
-  <footer>
-    <span class="chip untrusted">UNTRUSTED</span> = from the open web (fetch_url) &nbsp;&middot;&nbsp;
-    <span class="chip sensitive">SENSITIVE</span> = from a private file (read_file) &nbsp;&middot;&nbsp;
-    a send that is <b>UNTRUSTED&nbsp;+&nbsp;SENSITIVE</b> to an unauthorized destination is the exfil shape the policy blocks.
-  </footer>
+      <fieldset class="group">
+        <legend>Agent temperament</legend>
+        <div id="styles" class="styles"></div>
+      </fieldset>
+    </aside>
+
+    <main class="main">
+      <div class="actions">
+        <button id="guard" class="guard" type="button" data-on="true" aria-pressed="true">
+          <span class="lamp"></span> <span id="guardTxt">guard on</span>
+        </button>
+        <button id="run" class="run" type="button">&#9654; run the task</button>
+        <button id="ab" class="batch" type="button" title="Run twice: guard off, then guard on">A/B</button>
+      </div>
+      <p id="status" class="tally" aria-live="polite"></p>
+
+      <div id="tabs" class="tabs" hidden></div>
+
+      <section id="belt" class="belt" aria-label="Conveyor of tool calls">
+        <div class="tunnel"><span>X-RAY</span></div>
+        <div id="gate" class="gate" data-state="idle"><span>EXIT</span></div>
+        <div id="bags"></div>
+        <p id="idle" class="idle">belt empty · pick a model and a trap, then run the task</p>
+      </section>
+
+      <div id="nav" class="nav" hidden>
+        <button id="prev" class="navbtn" type="button" aria-label="Previous item">&#9664;</button>
+        <span id="pos" class="pos">0 / 0</span>
+        <button id="next" class="navbtn" type="button" aria-label="Next item">&#9654;</button>
+        <button id="play" class="navbtn wide" type="button">&#10074;&#10074; pause</button>
+        <button id="replay" class="navbtn wide" type="button">&#8635; replay</button>
+      </div>
+
+      <section class="monitor" aria-live="polite">
+        <div class="monHead">
+          <span id="monTitle">—</span>
+          <span class="taint">task label
+            <b class="green" data-l="TRUSTED">trusted</b>
+            <b class="orange" data-l="UNTRUSTED">untrusted</b>
+            <b class="blue" data-l="SENSITIVE">sensitive</b>
+          </span>
+        </div>
+        <div id="scan" class="scan">
+          <p class="ln" data-tone="muted">the scanner shows what each item really carries, including text a page hides with CSS.</p>
+        </div>
+        <div id="decision" class="decision" hidden></div>
+        <div id="verdict" class="verdict" hidden></div>
+      </section>
+
+      <div class="lower">
+        <section class="tray">
+          <h2>The smuggler's tray</h2>
+          <p class="note">Could the model sneak the key out in disguise? The real sanitizer against every
+            encoding trick in the battery. Instant, no model.</p>
+          <button id="bypass" class="xray" type="button">x-ray the disguises</button>
+          <div id="trayOut"></div>
+        </section>
+
+        <section class="chart">
+          <h2>Four models, one guard</h2>
+          <p class="note">From the project's 52-run evaluation. How often each model fell for the trap vs.
+            what got out with the guard on.</p>
+          <div id="chart"></div>
+          <p class="small">False alarms on innocent tasks: 0 on every model.</p>
+        </section>
+      </div>
+    </main>
+  </div>
 
   <script src="/app.js"></script>
 </body>
